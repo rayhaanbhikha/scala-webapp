@@ -5,12 +5,11 @@ import com.twitter.finagle.http.{Request, Response, Status}
 import com.twitter.util.Future
 
 
-class Home extends Service[Request, Response] {
+class Filtered extends Service[Request, Response] {
   override def apply(request: Request): Future[Response] = {
     val response = Response(Status.Ok)
-    println("hello world")
     response.setContentTypeJson()
-    response.contentString = """{"page": "Home Pages"}"""
+    response.contentString = """{"page": "Fitlered Page"}"""
     Future.value(response)
   }
 }
