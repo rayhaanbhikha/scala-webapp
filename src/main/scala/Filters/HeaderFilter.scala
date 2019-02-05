@@ -5,6 +5,7 @@ import com.twitter.finagle.{Service, SimpleFilter}
 import com.twitter.util.Future
 
 class HeaderFilter extends SimpleFilter[Request, Response]{
+
   override def apply(request: Request, service: Service[Request, Response]): Future[Response] = {
 
     val clientHeader: Option[String] = request.headerMap.get("client")
@@ -12,6 +13,6 @@ class HeaderFilter extends SimpleFilter[Request, Response]{
     if(clientHeader.isDefined)
       service(request)
     else
-      ErrorResponse(Status.BadRequest, "client header is missing")
+      ErrorResponse(Status.BadRequest, "Client header is missing")
   }
 }
