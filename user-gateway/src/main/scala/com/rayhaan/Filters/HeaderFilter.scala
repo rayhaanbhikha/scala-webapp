@@ -1,4 +1,4 @@
-package Filters
+package com.rayhaan.Filters
 
 import com.twitter.finagle.http.{Request, Response, Status}
 import com.twitter.finagle.{Service, SimpleFilter}
