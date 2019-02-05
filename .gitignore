@@ -7,3 +7,4 @@ secrets/*
 !secrets/README.md
 pipeline/scripts/tmp/
 project
+*.sc
