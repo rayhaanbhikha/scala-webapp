@@ -7,9 +7,9 @@ class UserStore extends UserDatastore.MethodPerEndpoint {
 
 object Users {
   def getUsers: UsersListResponse = UsersListResponse(Seq(
-    User("Rayhaan Bhikha", 23, "Male"),
-    User("Tom Lloyd", 24, "Male"),
-    User("Jennifer O'leary", 26, "Female"),
-    User("Edward Andrews", 23, "Male")
+    User("Rayhaan Bhikha", 23, "Male", "blue"),
+    User("Tom Lloyd", 24, "Male", "red"),
+    User("Jennifer O'leary", 26, "Female", "green"),
+    User("Edward Andrews", 23, "Male", "yellow")
   ))
 }
