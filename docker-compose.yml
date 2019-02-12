@@ -1,0 +1,30 @@
+version: '3'
+services:
+
+  usergateway:
+    image: raybhiks95/usergateway
+    container_name: usergateway
+    ports:
+      - 8080:8080
+
+    networks:
+      web-app:
+        aliases:
+          - usergateway
+    environment:
+      - USER_DATASTORE_URL = userdatastore
+
+  userdatastore:
+    image: raybhiks95/userdatastore
+    container_name: userdatastore
+    ports:
+      - 8081:8081
+
+    networks:
+      web-app:
+        aliases:
+          - userdatastore
+
+networks:
+  web-app:
+    driver: bridge
