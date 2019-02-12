@@ -10,7 +10,10 @@ import org.json4s.{DefaultFormats, Extraction, JValue}
 
 class Users extends Service[Request, Response] {
   implicit val formats = DefaultFormats + ThriftSerializer
-  private val userDatastore = Thrift.client.build[UserDatastore.MethodPerEndpoint]("userdatastore:8081", "thrift_client")
+
+  val userDatastoreUrl: String = sys.env.getOrElse("USER_DATASTORE_URL", "localhost:8081")
+
+  private val userDatastore = Thrift.client.build[UserDatastore.MethodPerEndpoint](userDatastoreUrl, "thrift_client")
 
   override def apply(request: Request): Future[Response] = userDatastore.getUsers().map(transformResponse)
 
