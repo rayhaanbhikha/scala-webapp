@@ -12,25 +12,27 @@ val finagleThrift = "com.twitter" %% "finagle-thrift" % finagleVersion
 
 val commonSettings = libraryDependencies ++= Seq(finagle, json4s, finagleThrift)
 
-lazy val userSystem = (project in file("."))
+lazy val webapp = (project in file("."))
   .aggregate(usergateway, userdatastore, thrift)
 
 
 lazy val dockerConfig = Seq(
-  packageName in Docker := s"web-app/${name.value}",
+  packageName in Docker := s"${name.value}",
   maintainer in Docker := "sky",
   version in Docker := version.value,
   dockerBaseImage := "openjdk",
-  dockerUsername := Some("identity")
+  dockerUsername := Some("raybhiks95"),
+  dockerRepository := Some("index.docker.io"),
+  dockerUpdateLatest := true
 )
 
 
 
 def generateDockerProject(project: Project): Project = project
   .enablePlugins(JavaAppPackaging, DockerPlugin)
-  .settings(commonSettings, dockerConfig)
+  .settings(commonSettings, 
+    dockerConfig)
   .dependsOn(thrift)
-
 
 lazy val usergateway = generateDockerProject(project in file("user-gateway"))
 

@@ -12,7 +12,7 @@ services:
         aliases:
           - usergateway
     environment:
-      - USER_DATASTORE_URL = userdatastore
+      - USER_DATASTORE_URL=userdatastore
 
   userdatastore:
     image: raybhiks95/userdatastore
