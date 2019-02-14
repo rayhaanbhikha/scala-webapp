@@ -62,6 +62,23 @@ Will pull down two images from dockerhub and start them as containers. Usergatew
             {
                 "message": "Client header is missing"
             }
+            
+    3) request:
+            
+            GET /users
+            
+        200 response: (example)
+        
+            [
+                {
+                    "name": "John Doe",
+                    "age": 30,
+                    "gender": "Male",
+                    "faveColour": "blue"
+                },
+                ....  
+            ]
+            
         
 
 ```
