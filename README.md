@@ -32,6 +32,7 @@ Will pull down two images from dockerhub and start them as containers. Usergatew
 ##API ENDPOINTS
 
 ```
+    http://localhost:8080/ ...
 
     1)
         request:
