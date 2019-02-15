@@ -1,0 +1,82 @@
+Scala web app project
+
+What is it?
+- 2 Services which run inside docker containers
+
+The 2 APIs are:
+1. User Gateway
+2. User Datastore
+
+What do they use to communicate?
+- Thrift
+
+The 3 endpoints to be tested are;
+1. /
+2. /filtered
+3. /users
+
+Test scenarios:
+
+1. Get: http://localhost:8080/
+
+-  Does not require any headers
+-  Response should be: 200 OK
+-  Response body should return as:
+
+   {
+    "page": "Home Pages"
+   }
+
+2. Get: http://localhost:8080/filtered
+
+- Requires "client" header
+- With header present:
+    - Response should be "200" OK
+    - Response body should be:
+    {
+    "page": "Filtered Page"
+    }
+- Without header:
+  - Response should be "400" Bad Request
+  - Response body should return as:
+
+  {
+    "message": "Client header is missing"
+  }
+
+3. Get: http://localhost:8080/users
+-  Does not require any headers
+-  Response should be: 200 OK
+-  Response body should return as:
+[
+    {
+        "name": "Rayhaan Bhikha",
+        "age": 23,
+        "gender": "Male",
+        "faveColour": "blue"
+    },
+    {
+        "name": "Tom Lloyd",
+        "age": 24,
+        "gender": "Male",
+        "faveColour": "red"
+    },
+    {
+        "name": "Jennifer O'leary",
+        "age": 26,
+        "gender": "Female",
+        "faveColour": "green"
+    },
+    {
+        "name": "Edward Andrews",
+        "age": 23,
+        "gender": "Male",
+        "faveColour": "yellow"
+    }
+]
+
+
+
+
+
+Possible bugs:
