@@ -9,7 +9,7 @@ class Filtered extends Service[Request, Response] {
   override def apply(request: Request): Future[Response] = {
     val response = Response(Status.Ok)
     response.setContentTypeJson()
-    response.contentString = """{"page": "Fitlered Page"}"""
+    response.contentString = """{"page": "Filtered Page"}"""
     Future.value(response)
   }
 }
